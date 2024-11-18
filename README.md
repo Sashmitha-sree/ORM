@@ -5,8 +5,8 @@
 To develop a Django application to store and retrieve data from a bank loan database using Object Relational Mapping(ORM).
 
 ## ENTITY RELATIONSHIP DIAGRAM
+![alt text](<Screenshot 2024-11-18 113659.png>)
 
-![alt text](<Screenshot 2024-11-17 220858.png>)
 
 ## DESIGN STEPS
 
@@ -27,22 +27,21 @@ Execute Django admin and create details for 10 books
 admin.py
 
 from django.contrib import admin
-from .models import Employee,EmployeeAdmin
-admin.site.register(Employee,EmployeeAdmin)
+from .models import bankloan,bankloanAdmin
+admin.site.register(bankloan,bankloanAdmin)
 
 models.py
 
 from django.db import models
 from django.contrib import admin
-class Employee (models.Model):
-    eid=models.CharField(max_length=20,help_text="employee_ID")
-    name=models.CharField(max_length=100)
-    salary= models.IntegerField()
-    age=models.IntegerField()
-    email=models.EmailField()
-
-class EmployeeAdmin(admin.ModelAdmin):
-    list_display=('eid','name','salary','age','email')
+class bankloan(models.Model):
+    loan_id = models.IntegerField(primary_key=True)
+    loan_type = models.CharField(max_length=60)
+    loan_amt = models.IntegerField()
+    cust_name = models.CharField(max_length=30)
+    cust_acno = models.IntegerField()
+class bankloanAdmin(admin.ModelAdmin):
+    list_display = ('loan_id','loan_type','loan_amt','cust_name','cust_acno')
                          
 
 
@@ -50,9 +49,8 @@ class EmployeeAdmin(admin.ModelAdmin):
 
 
 ## OUTPUT
-![alt text](<Screenshot (6).png>)
 
-
+![alt text](<Screenshot (7).png>)
 
 
 ## RESULT
